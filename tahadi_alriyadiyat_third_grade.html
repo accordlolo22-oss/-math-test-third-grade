@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تحدي الرياضيات - ثالث ابتدائي</title>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Tahoma,sans-serif;background:#f4f8fb;color:#17324d}
+.container{max-width:720px;margin:auto;padding:24px 16px}
+.card{background:white;border-radius:24px;padding:28px;box-shadow:0 8px 28px #17324d18}
+.header{text-align:center;margin-bottom:22px}.badge{display:inline-block;background:#e6f4ef;color:#176b50;padding:8px 16px;border-radius:30px;font-weight:bold}
+h1{font-size:30px;margin:14px 0 6px}.sub{color:#60788d}
+.q{display:none}.q.active{display:block}.num{font-weight:bold;color:#16745a;margin-bottom:12px}
+.question{font-size:26px;font-weight:bold;margin:15px 0 22px}
+.options{display:grid;gap:12px}.option{border:2px solid #dce7ee;border-radius:15px;padding:15px;font-size:21px;background:#fff;cursor:pointer;text-align:right}
+.option:hover{background:#f2f8fb}.option.selected{border-color:#16745a;background:#e9f6f1}
+button{width:100%;border:0;border-radius:15px;padding:15px;font-size:20px;font-weight:bold;background:#16745a;color:white;cursor:pointer;margin-top:22px}
+button:disabled{background:#aab9c2}.result{display:none;text-align:center}.score{font-size:52px;font-weight:bold;color:#16745a;margin:20px}
+.small{color:#647b8b}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="card">
+<div class="header">
+<div class="badge">الصف الثالث الابتدائي</div>
+<h1>🌟 تحدي الرياضيات</h1>
+<div class="sub">4 أسئلة بسيطة</div>
+</div>
+
+<div id="quiz">
+<div class="q active" data-answer="ب">
+<div class="num">السؤال 1 من 4</div><div class="question">2 + 3 = ؟</div>
+<div class="options"><div class="option">أ) 4</div><div class="option">ب) 5</div><div class="option">ج) 6</div></div>
+</div>
+<div class="q" data-answer="ب">
+<div class="num">السؤال 2 من 4</div><div class="question">7 − 2 = ؟</div>
+<div class="options"><div class="option">أ) 4</div><div class="option">ب) 5</div><div class="option">ج) 6</div></div>
+</div>
+<div class="q" data-answer="ب">
+<div class="num">السؤال 3 من 4</div><div class="question">كم عدد التفاحات؟ 🍎🍎🍎</div>
+<div class="options"><div class="option">أ) 2</div><div class="option">ب) 3</div><div class="option">ج) 4</div></div>
+</div>
+<div class="q" data-answer="ب">
+<div class="num">السؤال 4 من 4</div><div class="question">أي عدد أكبر؟</div>
+<div class="options"><div class="option">أ) 5</div><div class="option">ب) 8</div><div class="option">ج) 3</div></div>
+</div>
+<button id="next" disabled>التالي</button>
+</div>
+
+<div id="result" class="result">
+<h2>🎉 أحسنت!</h2>
+<div class="score" id="score"></div>
+<p id="message"></p>
+<button onclick="location.reload()">إعادة الاختبار</button>
+</div>
+</div>
+</div>
+<script>
+const qs=[...document.querySelectorAll('.q')], next=document.getElementById('next');
+let i=0,score=0,chosen=null;
+qs.forEach((q,idx)=>{
+ q.querySelectorAll('.option').forEach(o=>o.onclick=()=>{
+   q.querySelectorAll('.option').forEach(x=>x.classList.remove('selected'));
+   o.classList.add('selected'); chosen=o.textContent.trim().charAt(0); next.disabled=false;
+ });
+});
+next.onclick=()=>{
+ if(chosen===qs[i].dataset.answer) score++;
+ qs[i].classList.remove('active'); i++; chosen=null; next.disabled=true;
+ if(i<qs.length){qs[i].classList.add('active'); next.textContent=i===qs.length-1?'إنهاء الاختبار':'التالي'}
+ else{
+  document.getElementById('quiz').style.display='none';
+  document.getElementById('result').style.display='block';
+  document.getElementById('score').textContent=score+' / 4';
+  document.getElementById('message').textContent=score===4?'ممتاز! 🌟 إجابات رائعة.':score>=2?'أحسنت! 👏 حاول مرة أخرى لتحصل على الدرجة الكاملة.':'بداية جميلة! 💪 جرّب مرة أخرى.';
+ }
+};
+</script>
+</body>
+</html>
