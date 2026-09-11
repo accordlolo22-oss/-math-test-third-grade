@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>اختبار العلوم | المخلوقات الحية</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:linear-gradient(#e8f7ef,#fff);color:#163d32}
+.wrap{max-width:850px;margin:auto;padding:14px}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#bfead1,#f7f2cf);border-radius:24px;padding:28px 20px 25px;text-align:center;box-shadow:0 5px 20px #0002}
+.hero h1{margin:5px 0;color:#155c42;font-size:30px}.hero p{margin:7px;color:#49695e;font-size:17px}
+.creatures{font-size:38px;letter-spacing:9px;margin:10px 0}
+.info{background:#fff;padding:16px;border-radius:18px;margin-top:14px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:10px;box-shadow:0 3px 14px #0001}
+label{font-weight:bold}input[type=text]{width:100%;margin-top:6px;padding:12px;border:2px solid #cfe4d9;border-radius:12px;font-size:16px}
+.card{background:#fff;margin-top:14px;padding:18px;border-radius:18px;box-shadow:0 3px 14px #0001;border-right:6px solid #65b98c}
+.tag{display:inline-block;background:#e4f5eb;color:#176143;padding:5px 10px;border-radius:20px;font-size:13px;font-weight:bold;margin-bottom:8px}
+.q{font-size:19px;font-weight:bold;line-height:1.7;margin-bottom:10px}
+.option{display:block;padding:12px;margin:8px 0;background:#f7fbf9;border:2px solid #d9ebe2;border-radius:12px;font-size:17px;cursor:pointer}
+.option input{margin-left:8px;transform:scale(1.15)}
+.answer{width:100%;padding:13px;border:2px solid #cfe4d9;border-radius:12px;font-size:17px}
+button{width:100%;border:0;border-radius:14px;padding:15px;font-size:18px;font-weight:bold;cursor:pointer}
+#submit{margin-top:18px;background:#21865a;color:#fff}.result{display:none;background:#fff;margin-top:18px;padding:22px;text-align:center;border-radius:20px;box-shadow:0 4px 18px #0002}.score{font-size:36px;color:#176143;font-weight:bold;margin:10px}.stars{font-size:32px}#retry{margin-top:12px;background:#e5f3eb;color:#176143}
+.good{border-color:#45aa72!important;background:#effbf4!important}.bad{border-color:#d96565!important;background:#fff4f4!important}
+.footer{text-align:center;color:#668076;font-size:13px;padding:18px}
+@media(max-width:650px){.info{grid-template-columns:1fr}.hero h1{font-size:25px}.q{font-size:17px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="hero">
+<div class="creatures">🌱 🐰 🦋 🐦 🐢 🌳</div>
+<h1>🔬 اختبار العلوم</h1>
+<h2>ما المخلوقات الحية؟</h2>
+<p>للصف الثالث الابتدائي — الفصل الدراسي الأول</p>
+</section>
+
+<section class="info">
+<div><label>🧑‍🎓 اسم الطالب</label><input id="student" type="text" placeholder="اكتب اسم الطالب"></div>
+<div><label>🏫 الصف</label><input id="grade" type="text" value="الثالث الابتدائي"></div>
+<div><label>⭐ الدرجة</label><input type="text" value="من 10" readonly></div>
+</section>
+
+<div class="card" id="q1"><span class="tag">اختيار من متعدد</span><div class="q">1. أي مما يلي من خصائص المخلوقات الحية؟</div>
+<label class="option"><input type="radio" name="q1" value="أ"> أ) تنمو وتستجيب وتتكاثر</label>
+<label class="option"><input type="radio" name="q1" value="ب"> ب) لا تتغير أبدًا</label>
+<label class="option"><input type="radio" name="q1" value="ج"> ج) لا تحتاج إلى طاقة</label>
+<label class="option"><input type="radio" name="q1" value="د"> د) لا تستجيب لما حولها</label></div>
+
+<div class="card" id="q2"><span class="tag">أجب بنفسك ✏️</span><div class="q">2. ما المقصود بالاستجابة؟</div>
+<input class="answer" id="a2" placeholder="اكتب الإجابة هنا"></div>
+
+<div class="card" id="q3"><span class="tag">اختيار من متعدد</span><div class="q">3. ماذا تسمى عملية زيادة حجم المخلوق الحي وتغيره مع تقدم العمر؟</div>
+<label class="option"><input type="radio" name="q3" value="أ"> أ) النمو</label>
+<label class="option"><input type="radio" name="q3" value="ب"> ب) التكاثر</label>
+<label class="option"><input type="radio" name="q3" value="ج"> ج) الاستجابة</label>
+<label class="option"><input type="radio" name="q3" value="د"> د) الحركة</label></div>
+
+<div class="card" id="q4"><span class="tag">أجب بنفسك ✏️</span><div class="q">4. لماذا تنمو صغار المخلوقات الحية وتكبر؟</div>
+<input class="answer" id="a4" placeholder="اكتب الإجابة هنا"></div>
+
+<div class="card" id="q5"><span class="tag">اختيار من متعدد</span><div class="q">5. ماذا تسمى عملية إنتاج المخلوق الحي أفرادًا من نوعه؟</div>
+<label class="option"><input type="radio" name="q5" value="أ"> أ) النمو</label>
+<label class="option"><input type="radio" name="q5" value="ب"> ب) التكاثر</label>
+<label class="option"><input type="radio" name="q5" value="ج"> ج) الاستجابة</label>
+<label class="option"><input type="radio" name="q5" value="د"> د) التغير</label></div>
+
+<div class="card" id="q6"><span class="tag">أجب بنفسك ✏️</span><div class="q">6. كيف تتكاثر بعض النباتات مثل شجرة الليمون؟</div>
+<input class="answer" id="a6" placeholder="اكتب الإجابة هنا"></div>
+
+<div class="card" id="q7"><span class="tag">اختيار من متعدد</span><div class="q">7. كيف تتكاثر بعض الحيوانات مثل السحلية؟</div>
+<label class="option"><input type="radio" name="q7" value="أ"> أ) بالبذور</label>
+<label class="option"><input type="radio" name="q7" value="ب"> ب) بالبيض</label>
+<label class="option"><input type="radio" name="q7" value="ج"> ج) بالأوراق</label>
+<label class="option"><input type="radio" name="q7" value="د"> د) بالثمار</label></div>
+
+<div class="card" id="q8"><span class="tag">أجب بنفسك ✏️</span><div class="q">8. ماذا يحدث للنبات عندما يميل نحو الضوء؟</div>
+<input class="answer" id="a8" placeholder="اكتب الإجابة هنا"></div>
+
+<div class="card" id="q9"><span class="tag">اختيار من متعدد</span><div class="q">9. أي مثال يدل على استجابة مخلوق حي للخطر؟</div>
+<label class="option"><input type="radio" name="q9" value="أ"> أ) نمو الفرخ ليصبح دجاجة</label>
+<label class="option"><input type="radio" name="q9" value="ب"> ب) تكاثر النبات بالبذور</label>
+<label class="option"><input type="radio" name="q9" value="ج"> ج) هروب الأرنب عندما يرى الثعلب</label>
+<label class="option"><input type="radio" name="q9" value="د"> د) إنتاج الحصان مهرًا</label></div>
+
+<div class="card" id="q10"><span class="tag">أجب بنفسك ✏️</span><div class="q">10. اذكر مثالًا آخر على استجابة مخلوق حي لما يحيط به.</div>
+<input class="answer" id="a10" placeholder="اكتب الإجابة هنا"></div>
+
+<button id="submit" onclick="grade()">🌟 إنهاء الاختبار وإظهار الدرجة</button>
+<section class="result" id="result"><div class="stars">🌟🌟🌟</div><h2 id="welcome"></h2><div class="score" id="score"></div><p id="msg"></p><button id="retry" onclick="location.reload()">🔄 إعادة الاختبار</button></section>
+<div class="footer">🌿 تعلّم واكتشف عالم المخلوقات الحية 🌿</div>
+</div>
+
+<script>
+function norm(s){return(s||'').trim().toLowerCase().replace(/[ًٌٍَُِّْـ]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/[.,،؛:!?؟]/g,' ').replace(/\s+/g,' ')}
+function grade(){
+const student=document.getElementById('student').value.trim();if(!student){alert('فضلاً اكتب اسم الطالب أولاً.');document.getElementById('student').focus();return}
+let score=0;const mc=[['q1','أ'],['q3','أ'],['q5','ب'],['q7','ب'],['q9','ج']];
+mc.forEach(([id,c])=>{const card=document.getElementById(id),x=document.querySelector('input[name='+id+']:checked');card.classList.remove('good','bad');if(x&&x.value===c){score++;card.classList.add('good')}else card.classList.add('bad')});
+const written=[
+['a2',['الاستجابه','قدره المخلوق الحي على التفاعل مع ما يحيط به']],
+['a4',['لتصبح اكثر شبها بابائها','لتصبح أكثر شبها بآبائها']],
+['a6',['بالبذور','بواسطة البذور']],
+['a8',['يستجيب للضوء','يميل نحو الضوء','يميل النبات نحو الضوء']],
+['a10',['تسقط اوراق الشجر عندما يبرد الطقس','تسقط اوراق الشجر','تغير الحرباء لونها عند الخطر','يهرب الارنب عند رؤية الثعلب']]
+];
+written.forEach(([id,arr])=>{const e=document.getElementById(id),v=norm(e.value),ok=arr.some(a=>v===norm(a)||v.includes(norm(a)));e.classList.remove('good','bad');e.classList.add(ok?'good':'bad');if(ok)score++});
+document.getElementById('welcome').textContent='أحسنت يا '+student+' 👏';document.getElementById('score').textContent='الدرجة: '+score+' / 10';document.getElementById('msg').textContent=score===10?'ممتاز! إجابات رائعة 🎉':score>=7?'أداء ممتاز، واصل التقدم 🌟':'محاولة جميلة! راجع الدرس وحاول مرة أخرى 💚';document.getElementById('result').style.display='block';document.getElementById('result').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body></html>
